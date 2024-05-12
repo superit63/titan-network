@@ -48,7 +48,7 @@ function install_node() {
 
         # Configure storage and port
         sudo docker exec $container_id bash -c "\
-            sed -i 's/^[[:space:]]*#StorageGB = .*/StorageGB = 50/' /root/.titanedge/config.toml && \
+            sed -i 's/^[[:space:]]*#StorageGB = .*/StorageGB = 30/' /root/.titanedge/config.toml && \
             sed -i 's/^[[:space:]]*#ListenAddress = \"0.0.0.0:1234\"/ListenAddress = \"0.0.0.0:$current_port\"/' /root/.titanedge/config.toml && \
             echo 'Container titan'$i' storage set to 50 GB, port set to $current_port'"
 
