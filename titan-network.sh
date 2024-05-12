@@ -38,7 +38,11 @@ function install_node() {
         mkdir -p "$HOME/titan_storage_$i"
 
         # Start node
-        container_id=$(sudo docker run -d --restart always -v "$HOME/titan_storage_$i:/root/.titanedge/storage" --name "titan$i" --net=host nezha123/titan-edge:1.5)
+        container_id=$(sudo docker run -d --restart always \
+                        -v "$HOME/titan_storage_$i:/root/.titanedge/storage" \
+                        --name "titan$i" --net=host \
+                        -e UDP_RECV_BUFFER_SIZE=2048k \ # Thêm dòng này để cấu hình kích thước bộ đệm nhận
+                        nezha123/titan-edge:1.5)
         echo "Node titan$i has started. Container ID: $container_id"
         sleep 30
 
