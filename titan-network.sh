@@ -2,7 +2,8 @@
 
 # Node installation function
 function install_node() {
-    sudo apt update
+    # Automatically update and upgrade packages
+    sudo apt update -y
     sudo apt upgrade -y
 
     # Check if Docker is installed
